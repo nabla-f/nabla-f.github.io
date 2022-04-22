@@ -1,0 +1,202 @@
+:root {
+    --clr-x-bg: #F38630;
+    --clr-x-hover: #facca9;
+    --clr-x-shape: #915A17;
+    --clr-x-win-bg: rgba(243, 134, 48, 0.95);
+    --clr-x-win-text: #9b4909;
+    --clr-x-win-box-shdw: #facca9;
+    --clr-x-win-btn: #cb600c;
+    --clr-o-bg: #69D2E7;
+    --clr-o-hover: #d7f3f9;
+    --clr-o-shape: #168A93;
+    --clr-o-win-bg: rgba(105, 210, 231, 0.95);
+    --clr-o-win-text: #1d9bb4;
+    --clr-o-win-box-shdw: #d7f3f9;
+    --clr-o-win-btn: #27bedc;
+    --clr-cell-border: #666666;
+    --clr-board-border: #facca9;
+    --size-cell: 8vw;
+    --size-cell-min: 70px;
+}
+
+html,
+body {
+  height: 100%;
+  user-select: none;
+  user-zoom: none;
+}
+
+body {
+  background: #f2f2f2;
+  counter-reset: turn 10;
+  font-family: 'Merriweather Sans', sans-serif;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#board {
+    height: calc(var(--size-cell) * 3);
+    width: calc(var(--size-cell) * 3);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    border: 12px solid var(--clr-board-border);
+    border-collapse: collapse;
+    min-width: calc(var(--size-cell-min) * 3);
+    min-height: calc(var(--size-cell-min) * 3);
+}
+
+.cells {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.cell {
+    display: flex;
+    flex-wrap: wrap;
+    box-sizing: border-box;
+    border: 1px solid var(--clr-cell-border);
+    border-collapse: collapse;
+    height: var(--size-cell);
+    width: var(--size-cell);
+    min-height: var(--size-cell-min);
+    min-width: var(--size-cell-min);
+    transition-property: background;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 90%;
+    cursor: pointer;
+}
+
+#cell-1, #cell-2, #cell-3 {
+    border-top: 2px solid  var(--clr-cell-border);
+}
+
+#cell-3, #cell-6, #cell-9 {
+    border-right: 2px solid var(--clr-cell-border);
+}
+
+#cell-7, #cell-8, #cell-9 {
+    border-bottom: 2px solid  var(--clr-cell-border);
+}
+
+#cell-1, #cell-4, #cell-7 {
+    border-left: 2px solid  var(--clr-cell-border);
+}
+
+.player1 {
+    background-color: var(--clr-o-bg);
+    background-image: url('../img/o.svg');
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.player2 {
+    background-color: var(--clr-x-bg);
+    background-image: url('../img/x.svg');
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.player1Turn:hover {
+    background-color: var(--clr-o-hover);
+}
+
+.player2Turn:hover {
+    background-color: var(--clr-x-hover);
+}
+
+#done {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: -100%;
+}
+
+button[type="reset"] {
+    border: none;
+    border-radius: 3px;
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+    height: auto;
+    padding: 8px 10px;
+    position: static;
+    width: auto;
+}
+
+.player1winner {
+    background: var(--clr-o-win-bg);
+    color: var(--clr-o-win-text);
+    box-shadow: 0 0 0 12px var(--clr-o-win-box-shdw);
+    display: flex !important;
+}
+
+.player1winner > button {
+    background: var(--clr-o-win-btn);
+}
+
+.player2winner {
+    background: var(--clr-x-win-bg);
+    color: var(--clr-x-win-text);
+    box-shadow: 0 0 0 12px var(--clr-x-win-box-shdw);
+    display: flex !important;
+}
+
+.player2winner > button {
+    background: var(--clr-x-win-btn);
+}
+
+#winner {
+    width: var(--size-cell);
+    height: var(--size-cell);
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.player2win-img {
+    background: url('../img/x.svg');
+}
+
+.player1win-img {
+    background: url('../img/o.svg');
+}
+
+.drawgame {
+    background: #f2f2f2;
+    color: var(--clr-cell-border);
+    box-shadow: 0 0 0 12px #f2f2f2;
+    display: flex !important;
+    font-size: 1.5rem;
+}
+
+.drawgame > button {
+    background: var(--clr-cell-border);
+}
+
+.lead {
+    padding: 1vh;
+    font-size: x-large;
+}
+
+#winnerImg {
+    width: 25%;
+    height: 25%;
+    margin: 10%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
